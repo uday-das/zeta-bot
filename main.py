@@ -61,6 +61,9 @@ async def on_message(message):
   if msg.startswith('#hello'):
     await message.channel.send(random.choice(greeting_msg))
 
+  if msg.startswith('#hi'):
+    await message.channel.send(random.choice(greeting_msg))
+
   if msg.startswith('#motivate'):
     quote = get_quote()
     await message.channel.send(quote)
