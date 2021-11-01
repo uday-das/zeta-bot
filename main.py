@@ -45,11 +45,9 @@ def delete_encouragement(index):
     del encouragements[index]
     db["encouragements"] = encouragements
 
-
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
-
 
 @client.event
 async def on_message(message):
@@ -63,6 +61,15 @@ async def on_message(message):
 
   if msg.startswith('#hi'):
     await message.channel.send(random.choice(greeting_msg))
+
+  if msg.startswith('#bye'):
+    await message.channel.send("Bye bro, take care!")
+  
+  if msg.startswith('#playlist_chill'):
+    await message.channel.send("https://open.spotify.com/playlist/0mpJPVuIx5bs47gavm3WKX?si=8cbd08a8fe6b4ebb")
+
+  if msg.startswith('#playlist_upbeat'):
+    await message.channel.send("https://open.spotify.com/playlist/6u3vEsl8X0Kj78OkdMIrd4?si=6390e8fe13e9403d")
 
   if msg.startswith('#motivate'):
     quote = get_quote()
