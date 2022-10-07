@@ -3,14 +3,14 @@
     will send a greeting message
  
 **2. responding true:**
-    will start responding to sad messages
+    will start responding to sad messages  
     responding false:  
     will stop responding to sad messages
 
 **3. list:**
-    list of user generated encouraging messages
+    list of user generated encouraging messages  
     new:  
-    add a encouraging message
+    add a encouraging message  
     del:  
     delete the last added encouraging message
  
