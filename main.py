@@ -9,15 +9,15 @@ from keep_alive import keep_alive
 
 client = discord.Client()
 
-greeting_msg = ["Yo!", "Howdy!", "Hola!", "Hey wassup!"]
+greeting_msg = ["Yo", "Howdy", "Hola", "Hey wassup"]
 
 sad_words = ["sad", "frustrated", "depressed", "unhappy", "miserable", "depressing", "angry", "heartbroken", "grief", "down"]
 
 starter_encouragements = [
-  "Cheer up!, I am there for you!",
+  "Cheer up, I am there for you!",
   "Just listen to some uplifting songs, you will be fine", 
-  "Dont worry buddy, life is a mixture of ups and downs",
-  "You are a great person"
+  "You have the potential to do anything, just dont give up",
+  "Friends come and friends go its all part of life!"
 ]
 
 if "#responding" not in db.keys():
@@ -56,14 +56,32 @@ async def on_message(message):
 
   msg = message.content
 
-  if msg.startswith('#hello'):
-    await message.channel.send(random.choice(greeting_msg))
-
-  if msg.startswith('#hi'):
-    await message.channel.send(random.choice(greeting_msg))
+  if msg.startswith('#help'):
+    await message.channel.send(''' 1. **hi/hello:** 
+    will send a greeting message\n 
+2. **responding true:** 
+    will start responding to sad messages
+    **responding false:**
+    will stop responding to sad messages\n
+3. **list:**
+    list of user generated encouraging messages
+    **new:**
+    add a encouraging message
+    **del:**
+    delete the last added encouraging message\n 
+4. **motivate:** 
+    will send a motivational quote from the zenquotes.io api\n
+5. **bye:** 
+    will send a goodbye message''')
+    
+  if msg.startswith('#hello') or msg.startswith('#hi'):
+    await message.channel.send(random.choice(greeting_msg) + ', how can I help you?')
 
   if msg.startswith('#bye'):
-    await message.channel.send("Bye bro, take care!")
+    await message.channel.send("Bye, Have a nice day!")
+
+  if msg.startswith('#invite'):
+    await message.channel.send("https://discord.com/api/oauth2/authorize?client_id=899703682982084628&permissions=534723947584&scope=bot")
   
   if msg.startswith('#playlist_chill'):
     await message.channel.send("https://open.spotify.com/playlist/0mpJPVuIx5bs47gavm3WKX?si=8cbd08a8fe6b4ebb")
@@ -74,7 +92,6 @@ async def on_message(message):
   if msg.startswith('#motivate'):
     quote = get_quote()
     await message.channel.send(quote)
-
 
   if db["#responding"]:  
     options = starter_encouragements
