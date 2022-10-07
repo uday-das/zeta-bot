@@ -1,1 +1,1 @@
-### My first discord bot that I have programmed :)
+### My first discord bot that I have coded :)
